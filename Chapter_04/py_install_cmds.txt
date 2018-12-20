@@ -1,0 +1,17 @@
+# python installation commands
+#
+# Execute the following commands from the
+# SK2 Python Firmware Image folder
+#
+# See detailed instructions in Chapter 04
+# of the SK2 User's Guide
+#
+adb reboot bootloader
+fastboot flash boot_b mdm9607-boot.img.4k
+fastboot flash system_b mdm9607-sysfs.ubi.4k
+fastboot flash boot_a mdm9607-boot.img.4k
+fastboot flash system_a mdm9607-sysfs.ubi.4k
+fastboot flash data mdm9607-datafs.ubi.4k
+fastboot flash firmware_a firmware.ubi.4k
+fastboot flash firmware_b firmware.ubi.4k 
+fastboot reboot
