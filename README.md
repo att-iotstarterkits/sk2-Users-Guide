@@ -3,7 +3,7 @@ Users guide for AT&T IoT Starter kit (2nd generation) - also known as SK2 - with
 
 The User's Guide is broken into a series of chapters:
 
-1. Getting Started
+1. *Getting Started*
 
     The first chapter is all about getting started with the SK2. After a brief introduction to the kit itself, you’ll begin by registering your kit’s SIM card and then working through the QuickStart application that comes programmed into the SK2.
     
