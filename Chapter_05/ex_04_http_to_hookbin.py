@@ -12,7 +12,7 @@ import iot_mal                                        # Import the Modem Abstrac
 import iot_hw                                         # Allows access to SK2 hardware resources
 import requests                                       # A simple HTTP library for Python, built for human beings
 
-HOOKBIN_URL = r'https://hookb.in/PxNBKyBnMOsORjbyw0j6'# Replace URL with one you get from
+HOOKBIN_URL = r'https://hookb.in/PxNBKyBnMOsORjbyw0j6'# Replace URL with one you get from Hookbin.com
 
 #### Setup the MAL and data connection ########################################
 network_handler = iot_mal.network()                   # Connect to MAL.network

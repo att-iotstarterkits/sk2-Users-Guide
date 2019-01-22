@@ -1,5 +1,5 @@
 ###############################################################################
-# file: ex_01_connect_to_mal.py
+# file: ex_01_mal_api_example.py
 #
 # Connect to the Modem Abstraction Layer and access the SK2 SIM cards ICCID.
 # MAL provides three API groups: System, Network, and WWAN. This example uses
