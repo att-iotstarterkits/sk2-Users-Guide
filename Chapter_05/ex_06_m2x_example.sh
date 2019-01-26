@@ -10,13 +10,14 @@ echo we chose to use cURL to add two values to the M2X device.
 # Note: Your AT&T IoT Starter Kit (2nd generation) must have the Python image installed
 #       for this example to work
 
+M2X_EXAMPLES_PATH="/CUSTAPP/iot_files/m2x_examples"     # Set to location of your m2x_examples directory (only need to change if you moved it)
 MY_MASTER_API_KEY=b2762079a8b9115e0f11060b5d73098a      # Replace this value with the Master API Key for your M2X account
 
 echo
-my_device_id=$(API_KEY=$MY_MASTER_API_KEY python create_device.py)
+my_device_id=$(API_KEY=$MY_MASTER_API_KEY python $M2X_EXAMPLES_PATH/create_device.py)
 echo The new device key is: $my_device_id
 
-DEVICE_ID=$my_device_id API_KEY=$MY_MASTER_API_KEY python create_stream.py
+DEVICE_ID=$my_device_id API_KEY=$MY_MASTER_API_KEY python $M2X_EXAMPLES_PATH/create_stream.py
 echo "The 'stream_name' stream was added to the device"
 
 echo
