@@ -1,0 +1,95 @@
+[
+    {
+        "id": "76015f3c.1bc528",
+        "type": "inject",
+        "z": "ced392b4.e446f8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 168.81666564941406,
+        "y": 129.8333282470703,
+        "wires": [
+            [
+                "9ad454b7.3137d"
+            ]
+        ]
+    },
+    {
+        "id": "9ad454b7.3137d",
+        "type": "debug",
+        "z": "ced392b4.e446f8",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 853.8167114257812,
+        "y": 130.8333282470703,
+        "wires": []
+    },
+    {
+        "id": "ec74b749.dd48c8",
+        "type": "http response",
+        "z": "ced392b4.e446f8",
+        "name": "My HTTP Response",
+        "x": 863.2833862304688,
+        "y": 260.5,
+        "wires": []
+    },
+    {
+        "id": "e295ddd7.bb28a",
+        "type": "http in",
+        "z": "ced392b4.e446f8",
+        "name": "My HTTP Input",
+        "url": "/me",
+        "method": "post",
+        "username": "",
+        "password": "",
+        "authType": "noAuth",
+        "useAuth": false,
+        "useOauth": false,
+        "encryption": "none",
+        "realm": "",
+        "clientId": "",
+        "clientSecret": "",
+        "site": "",
+        "authorizationPath": "/oauth/authorize",
+        "tokenPath": "/oauth/access_token",
+        "scope": "",
+        "encryptObj": [
+            "username",
+            "password",
+            "clientId",
+            "clientSecret"
+        ],
+        "swaggerDoc": "",
+        "x": 165.2833251953125,
+        "y": 260.83331298828125,
+        "wires": [
+            [
+                "3fe1804e.2c2ba"
+            ]
+        ]
+    },
+    {
+        "id": "3fe1804e.2c2ba",
+        "type": "function",
+        "z": "ced392b4.e446f8",
+        "name": "My Function",
+        "func": "var v = msg.payload.value;\n\nif ( v % 2 ) {\n    //  odd\n    msg.payload.led = 'green';\n    node.log(\"Value was 'odd'\");\n} else {\n    //  even\n    msg.payload.led = 'blue';\n    node.log(\"Value was 'even'\");\n}\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "dependencies": [],
+        "x": 484.2833251953125,
+        "y": 262.83331298828125,
+        "wires": [
+            [
+                "ec74b749.dd48c8",
+                "9ad454b7.3137d"
+            ]
+        ]
+    }
+]

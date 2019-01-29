@@ -1,35 +1,29 @@
-# sh_04_curl_to_hookbin.sh
-#
-# This example reads the value of the user button and sends
-# that value to Hookbin.com using CURL
-#
+echo "ex_10_curl_to_flow.sh"
+echo
+echo "This shell script sends a number to an AT&T Flow iot project using cURL. "
+echo "Flow responds by sending back the number along with a color:"
+echo
+echo "Green if the number is 'odd'"
+echo "Blue if the number is 'even'"
 
-# Go to the GPIO directory
-cd /sys/class/gpio
+# Replace URL with your Endpoint from AT&T Flow
+MY_FLOW_URL='https://runm-west.att.io/e9215af2b0eea/8374c4f23615/fa5e6ab1a408526/in/flow/me'
 
-# Grant user-space access to the USER button
+echo
+echo
+echo "Sending an 'odd' number to Flow"
+echo  --------------------------------
+curl -X POST $MY_FLOW_URL -d "value=25"
 
-    # USER button
-    echo 23 > export
-    echo in > gpio23/direction
+echo
+echo
+echo "Sending an 'even' number to Flow"
+echo  --------------------------------
+curl -X POST $MY_FLOW_URL -d "value=320"
 
-# Read the value of the USER push button into "val"
-val=$(cat gpio23/value)
-echo Button = $val
-
-echo 23 > unexport
-
-# Turn on LED
-if [ $val -gt 0 ]
-then
-    # If "up"
-    data='{"button":"up"}'
-else
-    # If "down"
-    data='{"button":"down"}'
-fi
-
-curl https://hookb.in/PxNBKyBnMOsORjbyw0j6 --header "Content-Type: application/json" --request POST --data $data
+echo
+echo "That's it, we're done!"
+echo
 
 # =============================================================================
 #  Copyright © 2018, AT&T (R)

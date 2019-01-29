@@ -1,35 +1,12 @@
-# sh_04_curl_to_hookbin.sh
-#
-# This example reads the value of the user button and sends
-# that value to Hookbin.com using CURL
-#
+# Note: Your AT&T IoT Starter Kit (2nd generation) must have the Python image installed
+#       for this example to work
 
-# Go to the GPIO directory
-cd /sys/class/gpio
+M2X_EXAMPLES_PATH="/CUSTAPP/iot_files/m2x_examples"     # Set to location of your m2x_examples directory (only need to change if you moved it)
+MY_MASTER_API_KEY=b2762079a8b9115e0f11060b5d73098a      # Replace this value with the Master API Key for your M2X account
+M2X_DEVICE_ID="293f7c83e3fb261fdbdd8ea7a3b17ff3"
+echo
+DEVICE=$M2X_DEVICE_ID KEY=$MY_MASTER_API_KEY python $M2X_EXAMPLES_PATH/example.py
 
-# Grant user-space access to the USER button
-
-    # USER button
-    echo 23 > export
-    echo in > gpio23/direction
-
-# Read the value of the USER push button into "val"
-val=$(cat gpio23/value)
-echo Button = $val
-
-echo 23 > unexport
-
-# Turn on LED
-if [ $val -gt 0 ]
-then
-    # If "up"
-    data='{"button":"up"}'
-else
-    # If "down"
-    data='{"button":"down"}'
-fi
-
-curl https://hookb.in/PxNBKyBnMOsORjbyw0j6 --header "Content-Type: application/json" --request POST --data $data
 
 # =============================================================================
 #  Copyright © 2018, AT&T (R)
