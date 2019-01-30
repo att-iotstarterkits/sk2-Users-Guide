@@ -31,7 +31,7 @@ light_sensor_stream.add_value(float(light_value))
 
 
 # =============================================================================
-#  Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 #
 #  www.att.com 
 # 

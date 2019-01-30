@@ -25,7 +25,7 @@ print('Your ICCID is: {0}'.format(iccid))                              # One of 
 print('Your ICCID is: {0}'.format(mal_sys.get_iccid().get('iccid')))   # Or do it all in one complex line of code
 
 # =============================================================================
-#  Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 #
 #  www.att.com 
 # 

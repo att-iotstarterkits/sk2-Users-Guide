@@ -32,7 +32,7 @@ fi
 curl https://hookb.in/PxNBKyBnMOsORjbyw0j6 --header "Content-Type: application/json" --request POST --data $data
 
 # =============================================================================
-#  Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 #
 #  www.att.com 
 # 

@@ -45,7 +45,7 @@ void WWANStatus(wwanInfo *, netInfo *);
 #endif // __WWAN_STATUS_H__
 
 /* =====================================================================
-   Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 
    www.att.com 
  

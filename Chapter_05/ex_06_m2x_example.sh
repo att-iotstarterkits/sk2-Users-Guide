@@ -39,7 +39,7 @@ echo "That's it, we're done!"
 echo
 
 # =============================================================================
-#  Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 #
 #  www.att.com 
 # 

@@ -1,5 +1,5 @@
 /* =====================================================================
-   Copyright (c) 2016, Avnet (R)
+   Copyright © 2016, Avnet (R)
 
    www.avnet.com
 
@@ -19,6 +19,9 @@
     @version       1.0
     @date          Sept 2017
 
+    Modified       2019.01.26 (by Mindshare Advantage LLC for AT&T)
+    Added          RXMSG_SIZE (originally found in http.c in original Avnet example)
+
 ======================================================================== */
 
 
@@ -37,6 +40,9 @@
 #include <string>
 
 #endif
+
+#define RXMSG_SIZE    250        // moved from http.h
+
 
 #define VER             1.03
 #define VER_DATE    __DATE__ " @ " __TIME__
@@ -65,7 +71,6 @@
 #define MONITOR_PROMPT    ((char*)"MON> ")
 #define FACTORY_PROMPT    ((char*)"WNC> ")
 
-#define DEFAULT_DEVICE_ID    (char*)"e83cdd8645ab1a7c0c480156efbf78f6"
 #define DEFAULT_TEMP_API_STREAM (char*)"temp"
 #define DEFAULT_ADC_API_STREAM  (char*)"light_sens"
 

@@ -62,7 +62,7 @@ print('Radio Mode      : ' + str(status.get('radio_mode')) + 'G ' + status.get('
 print('My IP address   : ' + status.get('ip'))
 
 # =============================================================================
-#  Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 #
 #  www.att.com 
 # 

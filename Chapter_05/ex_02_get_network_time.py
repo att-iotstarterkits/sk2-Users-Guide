@@ -32,7 +32,7 @@ print('Local time = {0}'.format(lt))
 print('Local time = {0}'.format(datetime.strptime(mal_wwan.get_network_time().get('network_time'), '%Y/%m/%d %H:%M:%S-%f,00') + timedelta(hours=CST)))
 
 # =============================================================================
-#  Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 #
 #  www.att.com 
 # 

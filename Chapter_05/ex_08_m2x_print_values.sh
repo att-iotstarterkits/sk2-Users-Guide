@@ -9,7 +9,7 @@ DEVICE=$M2X_DEVICE_ID KEY=$MY_MASTER_API_KEY python $M2X_EXAMPLES_PATH/example.p
 
 
 # =============================================================================
-#  Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 #
 #  www.att.com 
 # 

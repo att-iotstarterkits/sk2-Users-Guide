@@ -14,7 +14,7 @@ extern int curl_post(const char *, const char *);
 #endif // __MYCURL_H__
 
 /* =====================================================================
-   Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 
    www.att.com 
  

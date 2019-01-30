@@ -62,7 +62,7 @@ for t in range(1, 7):                                                           
 print("\nExecution complete! \n")
 
 # =============================================================================
-#  Copyright © 2018, AT&T (R)
+#  Copyright (c) 2018, AT&T (R)
 #
 #  www.att.com 
 # 
