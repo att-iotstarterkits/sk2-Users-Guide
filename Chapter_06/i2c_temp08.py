@@ -38,23 +38,22 @@ def Get_Temperature_i2c():
     tempC08 = 0                                                                 # Variables for 8-bit Celsius and Fahrenheit temperature
     tempF08 = 0
 
-
     print('  Initializing LIS2DW12 for temperature reading:')
     # Initialize i2c bus
     myi2c = iot_hw.i2c()                                                        # Initialize (i.e. open) the i2c bus protocol
     print('  -> I2C bus initialized')
 
     # Get device_id from LIS2DW12 WHO_AM_I register (not required, but the first thing we tried when using this sensor
-    myi2c.write(DEV, [LIS2DW12.WHO_AM_I], 1, iot_hw.i2c_flag.I2C_NO_STOP)       # Write request to WHO_AM_I register
+    myi2c.write(DEV, [LIS2DW12.WHO_AM_I], 1, iot_hw.i2c_flag.I2C_NO_STOP)       # Send a request to WHO_AM_I register
     myi2c.read(DEV, lis2dw12_id, 1)                                             # Read data from the WHO_AM_I register
     print('  -> WHO_AM_I = {0:#2x} (should be {1:#2x})'.format(lis2dw12_id[0], LIS2DW12.ID))
 
     # Write configuration Control Register 1 (CTRL1)
-    myi2c.write(DEV, [LIS2DW12.CTRL1, 0x6B], 2, iot_hw.i2c_flag.I2C_NO_STOP)    # Write request to CTRL1 register
+    myi2c.write(DEV, [LIS2DW12.CTRL1, 0x6B], 2, iot_hw.i2c_flag.I2C_NO_STOP)    # Write address and data to CTRL1 register
     print('  -> CTRL1 written - 200Hz, single conversion, LPM4')
 
     # Trigger temperature sampling/conversion via CTRL3 register
-    myi2c.write(DEV, [LIS2DW12.CTRL3, 0x03], 2, iot_hw.i2c_flag.I2C_NO_STOP)    # Write request to CTRL3 register
+    myi2c.write(DEV, [LIS2DW12.CTRL3, 0x03], 2, iot_hw.i2c_flag.I2C_NO_STOP)    # Write address and data to CTRL3 register
     print('  -> CTRL3 written - Trigger temperature sampling')
 
     # Wait until temperature is ready and then read temperature (8b and 12b)
@@ -67,7 +66,7 @@ def Get_Temperature_i2c():
         r = temp_rdy[x] & 0x40                                                  # if DRDY_T bit is set, read the temperature
         if r > 0:
             # Get 8-bit temperature value (one I2C read)
-            myi2c.write(DEV, [LIS2DW12.OUT_T], 1, iot_hw.i2c_flag.I2C_STOP)     # Write request to OUT_T (temperature) register
+            myi2c.write(DEV, [LIS2DW12.OUT_T], 1, iot_hw.i2c_flag.I2C_STOP)     # Send a request to OUT_T (temperature) register
             myi2c.read(DEV, raw_temp_08, 1)                                     # Read 8-bit temp data from the OUT_T register
             print('\n  The raw 8-bit temp sensor reading is: {0}\n'.format(raw_temp_08[0]))
 

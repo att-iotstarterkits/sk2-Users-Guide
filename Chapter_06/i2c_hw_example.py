@@ -18,13 +18,13 @@ import time
 
 def test_i2c():
     print('Test I2C')
-    dev = 0x19                  # i2c slave address of LIS2DW12 accelerometer
-    addr = [0x0f]               # WHO_AM_I register
-    data = list()               # Create data array to receive results from "WHO_AM_I"
+    dev = 0x19                                                                  # i2c slave address of LIS2DW12 accelerometer
+    addr = [0x0f]                                                               # WHO_AM_I register
+    data = list()                                                               # Create data array to receive results from "WHO_AM_I"
 
-    myi2c = iot_hw.i2c()        # Initialize (i.e. open) the i2c bus protocol
-    myi2c.write(dev, addr, 1, iot_hw.i2c_flag.I2C_NO_STOP)   # Write request to WHO_AM_I register
-    myi2c.read(dev, data, 1)    # Read data from the WHO_AM_I register
+    myi2c = iot_hw.i2c()                                                        # Initialize (i.e. open) the i2c bus protocol
+    myi2c.write(dev, addr, 1, iot_hw.i2c_flag.I2C_NO_STOP)                      # Send a request to WHO_AM_I register
+    myi2c.read(dev, data, 1)                                                    # Read data from the WHO_AM_I register
     print('  I2C reg {0:#2x} value is: {1:#2x}'.format(addr[0], data[0]))
 
 

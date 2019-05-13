@@ -24,33 +24,33 @@ class LIS2DW12:                                                                 
     # Constants
     ID         = 0x44                                                           # Value read back from WHO_AM_I register
 
-"""
-val2hex()
-
-If the input value is negative, its converted to a twos-complement signed
-hex value. If the number is positive, the input value is returned.
-
-Background:
-    For a given radix (e.g. 8-bit numbers) signed and unsigned numbers provide
-    the same resolution, although their min/max values change. For example, an
-    8-bit   unsigned number range is 0 to 255, while the signed number range
-    is -128 to 127.
-
-    With this in mind, we can convert a negative unsigned number to its
-    twos-complement equivelent by adding the range maximum (i.e. 128) to the
-    difference between the input value and the maximum value.
-
-Parameters:
-    val = signed integer
-    len = number of bits for output value
-
-Returns:
-    twos complement signed hex number
-
-Note:
-    No error handling is implemented in this function
-"""
 def val2hex(val, len):
+    """
+    val2hex()
+
+    If the input value is negative, its converted to a twos-complement signed
+    hex value. If the number is positive, the input value is returned.
+
+    Background:
+        For a given radix (e.g. 8-bit numbers) signed and unsigned numbers provide
+        the same resolution, although their min/max values change. For example, an
+        8-bit   unsigned number range is 0 to 255, while the signed number range
+        is -128 to 127.
+
+        With this in mind, we can convert a negative unsigned number to its
+        twos-complement equivelent by adding the range maximum (i.e. 128) to the
+        difference between the input value and the maximum value.
+
+    Parameters:
+        val = signed integer
+        len = number of bits for output value
+
+    Returns:
+        twos complement signed hex number
+
+    Note:
+        No error handling is implemented in this function
+    """
     max = 2**(len-1)                                                            # Determine the maximum value based on radix bit length
 
     if val < 0:
@@ -61,24 +61,24 @@ def val2hex(val, len):
     return val
 
 
-"""
-u2s()
-
-If the input number is greater than the max value (based on the radix length)
-then we can assume the number must be negative, in which case we convert it
-to its signed value representation.
-
-Parameters:
-    uVal = input number
-    len  = number of radix bits
-
-Returns:
-    twos complement signed hex number
-
-Note:
-    No error handling is implemented in this function
-"""
 def u2s(uVal, len):
+    """
+    u2s()
+
+    If the input number is greater than the max value (based on the radix length)
+    then we can assume the number must be negative, in which case we convert it
+    to its signed value representation.
+
+    Parameters:
+        uVal = input number
+        len  = number of radix bits
+
+    Returns:
+        twos complement signed hex number
+
+    Note:
+        No error handling is implemented in this function
+    """
     max = 2**len / 2                                                            # Determine the maximum value based on radix bit length
     sVal = uVal                                                                 # Set return value to the input value (in case it's positive)
 
@@ -124,16 +124,16 @@ def Get_Temperature_i2c():
     print('  -> I2C bus initialized')
 
     # Get device_id from LIS2DW12 WHO_AM_I register (not required, but the first thing we tried when using this sensor
-    myi2c.write(DEV, [LIS2DW12.WHO_AM_I], 1, iot_hw.i2c_flag.I2C_NO_STOP)       # Write request to WHO_AM_I register
+    myi2c.write(DEV, [LIS2DW12.WHO_AM_I], 1, iot_hw.i2c_flag.I2C_NO_STOP)       # Send a request to WHO_AM_I register
     myi2c.read(DEV, lis2dw12_id, 1)                                             # Read data from the WHO_AM_I register
     print('  -> WHO_AM_I = {0:#2x} (should be {1:#2x})'.format(lis2dw12_id[0], LIS2DW12.ID))
 
     # Write configuration Control Register 1 (CTRL1)
-    myi2c.write(DEV, [LIS2DW12.CTRL1, 0x6B], 2, iot_hw.i2c_flag.I2C_NO_STOP)    # Write request to CTRL1 register
+    myi2c.write(DEV, [LIS2DW12.CTRL1, 0x6B], 2, iot_hw.i2c_flag.I2C_NO_STOP)    # Write address and data to CTRL1 register
     print('  -> CTRL1 written - 200Hz, single conversion, LPM4')
 
     # Trigger temperature sampling/conversion via CTRL3 register
-    myi2c.write(DEV, [LIS2DW12.CTRL3, 0x03], 2, iot_hw.i2c_flag.I2C_NO_STOP)    # Write request to CTRL3 register
+    myi2c.write(DEV, [LIS2DW12.CTRL3, 0x03], 2, iot_hw.i2c_flag.I2C_NO_STOP)    # Write address and data to CTRL3 register
     print('  -> CTRL3 written - Trigger temperature sampling')
 
     # Wait until temperature is ready and then read temperature (8b and 12b)
@@ -146,7 +146,7 @@ def Get_Temperature_i2c():
         r = temp_rdy[x] & 0x40                                                  # if DRDY_T bit is set, read the temperature
         if r > 0:
             # Get 8-bit temperature value (one I2C read)
-            myi2c.write(DEV, [LIS2DW12.OUT_T], 1, iot_hw.i2c_flag.I2C_STOP)     # Write request to OUT_T (temperature) register
+            myi2c.write(DEV, [LIS2DW12.OUT_T], 1, iot_hw.i2c_flag.I2C_STOP)     # Send a request to OUT_T (temperature) register
             myi2c.read(DEV, raw_temp_08, 1)                                     # Read 8-bit temp data from the OUT_T register
             print('\n  The raw 8-bit temp sensor reading is: {0}\n'.format(raw_temp_08[0]))
 
@@ -154,7 +154,7 @@ def Get_Temperature_i2c():
             myi2c.write(DEV, [LIS2DW12.OUT_T_H], 1, iot_hw.i2c_flag.I2C_STOP)   # Write request to OUT_T (temperature) register
             myi2c.read(DEV, raw_temp_12, 1)                                     # Read 12b (high) temp data from the OUT_T_H register
             myi2c.write(DEV, [LIS2DW12.OUT_T_L], 1, iot_hw.i2c_flag.I2C_STOP)   # Write request to OUT_T (temperature) register
-            myi2c.read(DEV, raw_temp_12, 1)                                     # Read 12b (low) temp data from the OUT_T_L register
+            myi2c.read(DEV, raw_temp_12, 1)                                     # Read 12b (low) temp data from the OUT_T_L register and append to the raw_temp_12 list
             print('  The raw 12-bit temp sensor reading is: high={0}, low={1}'.format(raw_temp_12[HIGH], raw_temp_12[LOW]))
 
             # Call val2hex() for both high/low to get back to twos-complement value
