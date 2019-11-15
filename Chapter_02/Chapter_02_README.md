@@ -25,4 +25,4 @@ Once the file has been pushed to the SK2, run the scrip using the following comm
     cd /CUSTAPP    # makes /CUSTAPP the active directory
     ./file         # executes the program "file" 
 
-You will find additional shell script examples in the Appendix.
+You will find additional shell script examples in the Appendix directory.
