@@ -26,6 +26,8 @@ The User's Guide is broken into a series of chapters:
 5. **Connecting to the Cloud with LTE**
 
     One of the unique capabilities of the SK2 is its ability to communicate over the AT&T LTE wireless connection. This allows untethered, mobile access to the Internet. In this chapter you will learn how to connect to the Cloud to send and receive data. This chapter leverages the connectivity libraries to support both programming languages (Python and C).
+	
+	*(April 2020) Note that AT&T deprecated their M2X and Flow services in April 2020, therefore, the SDK examples using those services will no longer work. AT&T migrated these features into their new [DataFlow](https://dataflow.iot.att.com/ "DataFlow") IoT platform. At this time, there are no plans to update this document.*
 
 6. **Using I2C with the Accelerometer**
 
